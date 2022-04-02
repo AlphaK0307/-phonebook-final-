@@ -3,7 +3,7 @@ from crypt import methods
 from app import app
 from flask import redirect, render_template, url_for
 from app.forms import SignUpForm, RegisterePhoneForm
-from app.models import User, Post
+from app.models import User, Post, Phone
 
 @app.route('/')
 def index():
@@ -33,8 +33,8 @@ def login():
     return render_template('login.html', title=title)
 
 
-@app.route('/register-phone', methods=["GET", "POST"])
-def  register_phone():
+@app.route('/register-phone', methods=['GET', 'POST'])
+def register_phone():
     title= 'Register your Phone'
     form= RegisterePhoneForm()
     if form.validate_on_submit():
@@ -42,5 +42,6 @@ def  register_phone():
         last_name=form.last_name.data
         phone_number=form.phone_number.data
         city=form.city.data
-        print(first_name, last_name, phone_number, city)
+        Phone(first_name=first_name, last_name=last_name, phone_number=phone_number, city=city)
+        return redirect(url_for('index'))
     return render_template('register_phone.html', title=title, form=form)

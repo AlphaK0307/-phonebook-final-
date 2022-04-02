@@ -42,7 +42,7 @@ class Phone(db.Model):
     first_name=db.Column(db.String(100), unique= True, nullable=False)
     last_name=db.Column(db.String(100), unique= True, nullable=False)
     phone_number=db.Column(db.String(100), unique= True, nullable=False)
-    city=db.Column(db.String(15), unique= True, nullable=False)
+    city=db.Column(db.String(15), nullable=False)
     date_created= db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __init__(self, **kwargs):
