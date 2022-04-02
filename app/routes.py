@@ -1,3 +1,4 @@
+from re import template
 from app import app
 from flask import redirect, render_template, url_for
 from app.forms import SignUpForm
@@ -31,4 +32,7 @@ def login():
     return render_template('login.html', title=title)
 
 
-
+@app.route('/register-phone')
+def  register_phone():
+    title= 'Register your Phone'
+    return render_template('register_phone.html', title=title)
