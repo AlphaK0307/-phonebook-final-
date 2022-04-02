@@ -36,3 +36,29 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"<Post|{self.title}>"
+
+class Phone(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name=db.Column(db.String(100), unique= True, nullable=False)
+    last_name=db.Column(db.String(100), unique= True, nullable=False)
+    phone_number=db.Column(db.String(100), unique= True, nullable=False)
+    city=db.Column(db.String(15), unique= True, nullable=False)
+    date_created= db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        db.session.add(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return f"<Phone {self.id}|{self.first_name}>"
+
+    def __str__(self):
+        return f"""
+        FirstName:{self.first_name}
+        LastName:{self.last_name}
+        Phone:{self.phone_number}
+        City:{self.city}
+        """
+
+    
