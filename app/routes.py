@@ -1,8 +1,9 @@
-from re import template
+# from re import template
 from app import app
 from flask import redirect, render_template, url_for
 from app.forms import SignUpForm
-from app.models import User, Post
+from app.forms import RegisterePhoneForm
+# from app.models import User, Post
 
 @app.route('/')
 def index():
@@ -35,4 +36,5 @@ def login():
 @app.route('/register-phone')
 def  register_phone():
     title= 'Register your Phone'
-    return render_template('register_phone.html', title=title)
+    form= RegisterePhoneForm()
+    return render_template('register_phone.html', title=title, form=form)

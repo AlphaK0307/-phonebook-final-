@@ -1,8 +1,28 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 
-{%block content%}
+{% block content %}
 
 <h1>Register New Phone</h1>
 
+{{ form }}
 
-{%endblock content%}
+ <form action="" class="post">
+     {{form.csrf_token}}
+    <div class="form group">
+        {{ form.first_name.label }}
+        {{ form.first_name(class='form-control', placeholder='Name') }}
+
+        {{ form.last_name.label }}
+        {{ form.last_name(class='form-control', placeholder='Name') }}
+
+        {{ form.phone_number.label }}
+        {{ form.phone_number(class='form-control', placeholder='Name') }}
+
+        {{ form.city.label }}
+        {{ form.city(class='form-control', placeholder='Name') }}
+
+        {{ form.submit(class= 'btn btn-outline-primary w-100') }}
+    </div>
+ </form> 
+
+{% endblock content %}
