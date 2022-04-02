@@ -1,9 +1,9 @@
 # from re import template
+from crypt import methods
 from app import app
 from flask import redirect, render_template, url_for
-from app.forms import SignUpForm
-from app.forms import RegisterePhoneForm
-# from app.models import User, Post
+from app.forms import SignUpForm, RegisterePhoneForm
+from app.models import User, Post
 
 @app.route('/')
 def index():
@@ -13,7 +13,7 @@ def index():
     return render_template('index.html', current_user=user, title=title, posts=posts)
 
 
-@app.route('/signup', methods=["GET", "POST"])
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     title= 'Sign Up'
     form = SignUpForm()
@@ -33,8 +33,14 @@ def login():
     return render_template('login.html', title=title)
 
 
-@app.route('/register-phone')
+@app.route('/register-phone', methods=["GET", "POST"])
 def  register_phone():
     title= 'Register your Phone'
     form= RegisterePhoneForm()
+    if form.validate_on_submit():
+        first_name=form.first_name.data
+        last_name=form.last_name.data
+        phone_number=form.phone_number.data
+        city=form.city.data
+        print(first_name, last_name, phone_number, city)
     return render_template('register_phone.html', title=title, form=form)
