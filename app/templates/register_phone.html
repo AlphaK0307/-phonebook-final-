@@ -6,8 +6,8 @@
 
 {{ form }}
 
- <form action="" class="post">
-     {{form.csrf_token}}
+ <form method="post">
+     {{ form.csrf_token }}
     <div class="form group">
         {{ form.first_name.label }}
         {{ form.first_name(class='form-control', placeholder='First Name') }}
