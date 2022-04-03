@@ -37,6 +37,7 @@ def login():
 def register_phone():
     title= 'Register your Phone'
     form= RegisterePhoneForm()
+    phones=Phone.query.all()
     if form.validate_on_submit():
         first_name=form.first_name.data
         last_name=form.last_name.data
@@ -44,4 +45,4 @@ def register_phone():
         city=form.city.data
         Phone(first_name=first_name, last_name=last_name, phone_number=phone_number, city=city)
         return redirect(url_for('index'))
-    return render_template('register_phone.html', title=title, form=form)
+    return render_template('register_phone.html', title=title, form=form, phones=phones)

@@ -7,7 +7,9 @@
 {{ form }}
 
  <form method="post">
+
      {{ form.csrf_token }}
+
     <div class="form group">
         {{ form.first_name.label }}
         {{ form.first_name(class='form-control', placeholder='First Name') }}
@@ -25,6 +27,12 @@
     </div>
  </form> 
 
-{{}}
+{% for p in phones %}
+<div class="card">
+    <div class="card body">
+        {{p}}
+    </div>
+</div>
+{% endfor %}
 
 {% endblock content %}
